@@ -76,14 +76,22 @@ void LyteStripRemote::setAllPixels(uint8_t r,
                                    uint8_t g,
                                    uint8_t b)
 {
-  _comms->write((uint8_t)0xaa);
-  _comms->write((uint8_t)0x00);
-  _comms->write((uint8_t)0x04);
-  _comms->write((uint8_t)'S');
-  _comms->write((uint8_t)r);
-  _comms->write((uint8_t)g);
-  _comms->write((uint8_t)b);
-  _comms->write((uint8_t)0x55);
+  for (int n = 0; n < numLEDs; n++)
+  {
+    uint8_t *p = &pixels[n * 3];
+    *p++ = r;
+    *p++ = g;
+    *p = b;
+  }
+
+  // _comms->write((uint8_t)0xaa);
+  // _comms->write((uint8_t)0x00);
+  // _comms->write((uint8_t)0x04);
+  // _comms->write((uint8_t)'S');
+  // _comms->write((uint8_t)r);
+  // _comms->write((uint8_t)g);
+  // _comms->write((uint8_t)b);
+  // _comms->write((uint8_t)0x55);
 }
 
 // Set pixel color from separate R,G,B components:
