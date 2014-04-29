@@ -1,0 +1,62 @@
+<!-- Based off of: http://www.drtomallen.com/1/post/2013/09/electric-imp-httpin-using-ajax-from-a-static-html-page-without-php-jquery-or-access-to-the-electric-imp-agents-beta-test-phew.html -->
+<html>
+<head>
+<script type="text/javascript">
+
+function sendToImpAgent(keyName,form)
+{
+  var url = "https://agent.electricimp.com/"
+  var uid = form.uid.value;
+
+  url = url + uid + "?key=" + keyName;
+
+  //check support for the XMLHttpRequest object
+  if (window.XMLHttpRequest)
+  {
+    var httpRequest = new XMLHttpRequest();
+
+    // Call the open() method to make the request
+    httpRequest.open("GET", url, true);
+
+    // Send the proper header information along with the request
+    //httpRequest.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    httpRequest.setRequestHeader("Connection", "close");
+ 
+    // Send the request
+    httpRequest.send();
+    //httpRequest.onreadystatechange = getData; // Assign the callback function
+    
+    //alert("Sent " + url)
+  }
+  //else, alert
+  else
+  {
+    alert("Screw IE6...")
+  }
+}
+
+//This function handles the server response and does nothing at all with it.
+function getData()
+{
+  // Do nothing.
+}
+</script>
+
+</head>
+
+<body>
+
+<form name="http servo" action="#" method="post">
+UID of electric impee: <input type="text" name="uid" value="your impee's uid goes here"><br>
+
+<input type="button" value="Left" onclick="sendToImpAgent('Left', this.form)" />
+<input type="button" value="Right" onclick="sendToImpAgent('Right', this.form)" />
+<input type="button" value="Up" onclick="sendToImpAgent('Up', this.form)" />
+<input type="button" value="Down" onclick="sendToImpAgent('Down', this.form)" />
+<input type="button" value="Start" onclick="sendToImpAgent('Start', this.form)" />
+<br>
+</form>
+
+</body>
+
+</html>
