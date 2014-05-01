@@ -17,7 +17,7 @@
 // Playing field
 struct Field{
   uint8_t pix[FIELD_WIDTH][FIELD_HEIGHT+1];//Make field one larger so that collision detection with bottom of field can be done in a uniform way
-  unsigned int color[FIELD_WIDTH][FIELD_HEIGHT];
+  uint32_t color[FIELD_WIDTH][FIELD_HEIGHT];
 };
 Field field;
 
@@ -29,7 +29,7 @@ struct Brick{
   uint8_t siz;
   uint8_t pix[MAX_BRICK_SIZE][MAX_BRICK_SIZE];
 
-  unsigned int color;
+  uint32_t color;
 };
 Brick activeBrick;
 
