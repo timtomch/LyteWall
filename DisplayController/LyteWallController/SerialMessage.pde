@@ -27,7 +27,7 @@
 
 #define SERIALMESSAGE_VERSION 10000
 
-#define SerialIn Serial1
+#define SerialIn Serial
 
 #define MAX_BUFFER 128
 

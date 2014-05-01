@@ -40,8 +40,14 @@ int numLEDs = numStrands * LEDsPerStrand;
 int const colorDepth = 3;
 int const pinStrand = 6;
 
+#define debugSerialOut Serial
+#define InputSerial Serial
+uint32_t const debugSerialBitRate = 250000;
 uint32_t const serialBitRate = 250000;
 
+#ifdef ARDUINO
+#define Constant(x) x
+#endif
 
 uint8_t strandData[144 * colorDepth];  // currently a max of 12x12
 Adafruit_NeoPixel strip = Adafruit_NeoPixel(numLEDs, pinStrand, NEO_GRB + NEO_KHZ800);
@@ -51,19 +57,19 @@ void printA(uint8_t *a, uint8_t s)
 {
   for (uint8_t i = 0; i < s; i++)
   {
-    Serial.print(a[i], DEC);
-    Serial.print(" ");
+    debugSerialOut.print(a[i], DEC);
+    debugSerialOut.print(" ");
   }
 
-  Serial.println();
+  debugSerialOut.println();
 }
 
 
 void setup()
 {
-  Serial.begin(115200);
-  Serial.println(Constant("Started"));
-  Serial1.begin(serialBitRate);
+  debugSerialOut.begin(debugSerialBitRate);
+  debugSerialOut.println(Constant("Started"));
+  InputSerial.begin(serialBitRate);
 
   // This section is purely for my debug rig, which is only 5 x 5 LEDs.
   // If pin 8 is held low on startup, we switch to 5 x 5 mode.
@@ -72,7 +78,7 @@ void setup()
   delay(5);
   if (digitalRead(8) == 0)
   {
-    Serial.println(Constant("Setting 5x5"));
+    debugSerialOut.println(Constant("Setting 5x5"));
     numStrands = 5;
     LEDsPerStrand = 5;
     numLEDs = 25;
@@ -248,8 +254,8 @@ void loop()
       }
       else
       {
-        Serial.print(Constant("CMD V Error - Column # too big: "));
-        Serial.println(col, DEC);
+        debugSerialOut.print(Constant("CMD V Error - Column # too big: "));
+        debugSerialOut.println(col, DEC);
       }
     }
 
@@ -270,10 +276,10 @@ void loop()
       }
       else
       {
-        Serial.print(Constant("CMD P Error - col/row out of bounds: C"));
-        Serial.print(col, DEC);
-        Serial.print(Constant("/R"));
-        Serial.println(row, DEC);
+        debugSerialOut.print(Constant("CMD P Error - col/row out of bounds: C"));
+        debugSerialOut.print(col, DEC);
+        debugSerialOut.print(Constant("/R"));
+        debugSerialOut.println(row, DEC);
       }
     }
 
@@ -301,8 +307,8 @@ void loop()
       }
       else
       {
-        Serial.print(Constant("CMD B Error - Column # too big: "));
-        Serial.println(col, DEC);
+        debugSerialOut.print(Constant("CMD B Error - Column # too big: "));
+        debugSerialOut.println(col, DEC);
       }
     }
 
@@ -340,15 +346,15 @@ void loop()
 
     else
     {
-      Serial.print(Constant("Bad command. Got CMD: "));
-      Serial.print((char)msgBuffer[0]);
-      Serial.print(Constant(" and LEN: "));
-      Serial.println(msgLength, DEC);
+      debugSerialOut.print(Constant("Bad command. Got CMD: "));
+      debugSerialOut.print((char)msgBuffer[0]);
+      debugSerialOut.print(Constant(" and LEN: "));
+      debugSerialOut.println(msgLength, DEC);
     }
   }
   else
   {
-    Serial.println(Constant("Malformed message."));
+    debugSerialOut.println(Constant("Malformed message."));
   }
 }
 
