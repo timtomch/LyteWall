@@ -1,0 +1,209 @@
+/**********************************
+Gameboy Styles
+***********************************/
+
+
+#gameboy {
+    width: 320px;
+    height: 480px;
+    margin-left:auto;
+    margin-right:auto;
+    margin-top: 1%;
+    border: 1px white solid;
+    border-radius: 10px;
+    border-bottom-right-radius: 4em;
+    background-image:url(gameboy.jpg);
+    background-color: #C7C4BD;
+    background-size:320px 480px;
+    background-position:center;
+}
+
+#screen {
+  
+  width: 250px;
+  height: 200px;
+  border: solid 1px black;
+  margin: 40px auto;
+  border-radius: 5%;
+  background-image:url(tetris.gif);
+  background-size: 250px 200px;
+  background-position:center;
+}
+
+/**********************************
+Direction Button Styles
+***********************************/
+
+#cross {
+  float: left;
+  height: 100px;
+  width: 92px;
+  display: inline-block;
+  text-align:center;
+  margin-left: 40px;
+}
+
+.updown, .updown:active {
+  border-radius: 0%;
+  width: 29px;
+  height: 31px;
+  color: #555;
+  background-color: black;
+  border: black 1px solid;
+
+}
+
+.updown:hover, .leftright:hover {
+
+  background-color: #222;
+}
+
+
+.leftright, .leftright:active {
+  border-radius: 0%;
+  width: 46px;
+  height: 28px;
+  color: #555;
+  background-color: black;
+  border: black 1px solid;
+  box-shadow: 2px 2px 0px #444;
+}
+
+
+#left {
+  
+  float: left;
+  border-top-left-radius:15%;
+  border-bottom-left-radius:15%;
+  text-align: left;
+  background-image:url(triangleleft.png);
+  background-size: 16px 16px;
+  background-position: left center;
+  background-repeat: no-repeat;
+  
+}
+
+#right {
+  border-bottom-right-radius:15%;
+  border-top-right-radius:15%;
+  text-align: right;
+  background-image:url(triangleright.png);
+  background-size: 16px 16px;
+  background-position: right center;
+  background-repeat: no-repeat;
+  
+}
+
+#up {
+  border-top-left-radius:15%;
+  border-top-right-radius:15%;
+  box-shadow: 2px 0px #444;
+  background-image:url(triangleup1.png);
+  background-size: 16px 16px;
+  background-position: top center;
+  background-repeat: no-repeat;
+  
+}
+
+#down {
+  border-bottom-left-radius:15%;
+  border-bottom-right-radius:15%;
+  box-shadow: 2px 2px #444;
+   background-image:url(triangledown.png);
+  background-size: 16px 16px;
+  background-position: bottom center;
+  background-repeat: no-repeat;
+  
+}
+
+/**********************************
+Rotation Button Styles
+***********************************/
+
+#ab {
+  float: right;
+  text-align:center;
+  margin-right: 50px;
+  margin-top: 0px;
+  padding: 15px 0px;
+  transform:rotate(-20deg);
+  -ms-transform:rotate(-20deg); /* IE 9 */
+  -webkit-transform:rotate( -20deg); /* Opera, Chrome, and Safari */
+  
+}
+
+.ab, .ab:active {
+  border-radius: 100%;
+  width: 38px;
+  height: 38px;
+  color: #ccc;
+  background-color: #F21339;
+  border: #AF1330 1px solid;
+  box-shadow: 2px 2px #888888;
+  font-family: 'Audiowide', sans-serif;
+  font-size: 12px;
+  
+  
+  
+}
+
+.ab:hover {
+
+  background-color: #D61334;
+}
+
+#a {
+  
+  margin-left: 10px;
+  }
+  
+
+/**********************************
+Start-Select Styles
+***********************************/
+  
+
+#start {
+  margin-left: auto;
+  margin-right: 130px;
+  clear: both;
+  text-align: center;
+  float: right;
+}
+
+#select {
+  margin-left: 110px;
+  margin-right: auto;
+  clear: left;
+  text-align: center;
+  float: left;
+}
+
+.start, .start:active {
+  border-radius: 35%;
+  width: 30px;
+  height: 10px;
+  color: #777;
+  background-color: #777;
+  border: #444 1px solid;
+  box-shadow: 2px 2px #888888;
+  transform:rotate(-20deg);
+  -ms-transform:rotate(-20deg); /* IE 9 */
+  -webkit-transform:rotate(-20deg); /* Opera, Chrome, and Safari */
+  margin: 10px 0px 0px 5px;
+  
+  }
+  
+ .start:hover {
+ 	background-color: #888}
+  
+  .label {
+    
+  font-family: 'Audiowide', sans-serif;
+  font-size: 10px;
+  transform:rotate(-20deg);
+  -ms-transform:rotate(-20deg); /* IE 9 */
+  -webkit-transform:rotate(-20deg); /* Opera, Chrome, and Safari */
+
+    
+    }

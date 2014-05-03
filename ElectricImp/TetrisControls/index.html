@@ -1,0 +1,34 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title> Site 3 Pixel Wall | Tetris </title>
+<link href='http://fonts.googleapis.com/css?family=Audiowide' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" type="text/css" href="normalize.css"> 
+<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+<section>
+<div id = "gameboy">
+<div id = "screen">
+</div>
+<div id = "cross">
+<div><input type="button" id = "up" class = "updown" value=" " onclick="sendToImpAgent('Up', this.form)" /></div>
+<div><input type="button" id = "left" class = "leftright" value=" " onclick="sendToImpAgent('Left', this.form)" />
+<input type="button" id = "right" class = "leftright" value=" " onclick="sendToImpAgent('Right', this.form)" /></div>
+<span><input type="button" id = "down" class = "updown" value=" " onclick="sendToImpAgent('Down', this.form)" />
+</div>
+<div id = "ab">
+<input type="button" class = "ab" id = "b" value="B" onclick="sendToImpAgent('Up', this.form)" />
+<input type="button" class = "ab" id = "a" value="A" onclick="sendToImpAgent('Up', this.form)" />
+</div>
+<div id = "start">
+<input type="button" class = "start" value="Start" onclick="sendToImpAgent('Start', this.form)" />
+<div class = "label">Start</div> </div>
+<div id = "select">
+<input type="button" class = "start" value="Select" onclick="sendToImpAgent('Start', this.form)" />
+<div class = "label">Select</div></div>
+</div>
+</div>
+</section>
+</body>
+</html>
