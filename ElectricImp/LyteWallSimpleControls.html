@@ -1,6 +1,7 @@
 <!doctype html>
 <html>
 <head>
+<meta name="viewport" content="width=device-width,user-scalable=0,initial-scale=1,minimum-scale=1,maximum-scale=1">
 <title> Site 3 Pixel Wall | Tetris </title>
 <style type='text/css'>
 html, body, #wrapper {
@@ -10,17 +11,83 @@ html, body, #wrapper {
   border: none;
   text-align: center;
 }
+
 #wrapper {
   background-color: #ffffff;
   margin: 0 auto;
   text-align: center;
-  color: #ffffff;
   vertical-align: middle;
   width: 100%;
 }
+.console {
+  height:1.3em;
+  border: 1px solid;
+  text-align:left;
+}
+
+.console > div { display:inline-block;}
+.control-wrapper {
+  height:88%;
+  width:96%;
+  padding:1% 1% 0;
+  background-color:darkgrey;
+  border: 5px solid lightgrey;
+}
+
+.control-wrapper > div { height:100%; width:49%;}
+.control-wrapper > div:first-child{ float:left;}
+.control-wrapper > div:last-child{ float:right;}
+
+.d-pad > div { height:33%; width:100%;}
+
+.button-pad { text-align:right;}
+.button-pad > div {
+  height:33%;
+  max-height:100px;
+  border-radius:50%;
+}
+.button-pad::before {
+  content: "";
+  display:block;
+  width:25%;
+  height:33%;
+}
+
+.button-pad > div:first-child{ margin-left:8%;}
+.button-pad > div:last-child{ margin-left:8%; margin-right:8%;}
+
+.row-middle { background-color:#000;}
+.row-middle > div:first-child{ margin-right:16%; float:left;}
+.row-middle > div:last-child{ margin-left:16%; float:right;}
+
 .butt {
-  background-color:#00ff00;
-  color: #000000;
+  display:inline-block;
+  height: 100%;
+  width: 33%;
+  text-align:center;
+}
+
+.butt.up{ background-image: url('/tetriscontrols/triangleup1.png'); }
+.butt.left{ background-image: url('/tetriscontrols/triangleleft.png');}
+.butt.right{ background-image: url('/tetriscontrols/triangleright.png');}
+.butt.down{ background-image: url('/tetriscontrols/triangledown.png');}
+
+.d-pad .butt {
+  background-color:#000;
+  background-repeat:no-repeat;
+  background-position:center;
+  background-size:75% 50%;
+}
+
+.button-pad .butt{ background-color:red; }
+.button-pad .butt::before{
+  content: "";
+  display:block;
+  width:25%;
+  height:40%;
+}
+.button-pad .butt > div {
+  font-weight:bold;
 }
 </style>
 <script>
@@ -50,34 +117,26 @@ html, body, #wrapper {
 </script>
 </head>
 <body>
-    <table border="0" id="wrapper">
-        <tr>
-            <td>0</td>
-            <td class="butt" onclick="sendToImpAgent('Up')">U</td>
-            <td>0</td>
-            <td>0</td>
-            <td>0</td>
-            <td>0</td>
-            <td>0</td>
-        </tr>
-        <tr>
-            <td class="butt" onclick="sendToImpAgent('Left')">L</td>
-            <td>0</td>
-            <td class="butt" onclick="sendToImpAgent('Right')">R</td>
-            <td>0</td>
-            <td class="butt" onclick="sendToImpAgent('Start')">O</td>
-            <td>0</td>
-            <td class="butt" onclick="sendToImpAgent('Start')">X</td>
-        </tr>
-        <tr>
-            <td>0</td>
-            <td class="butt" onclick="sendToImpAgent('Down')">D</td>
-            <td>0</td>
-            <td>0</td>
-            <td>0</td>
-            <td>0</td>
-            <td>0</td>
-        </tr>
-    </table>
+    <div id="wrapper">
+      <div class="console"><span>&nbsp;&gt;</span></div>
+      <div class="control-wrapper">
+        <div class="d-pad">
+          <div>
+            <div class="butt up" onclick="sendToImpAgent('Up')">&nbsp;</div>
+          </div>
+          <div class="row-middle">
+            <div class="butt left" onclick="sendToImpAgent('Left')">&nbsp;</div>
+            <div class="butt right" onclick="sendToImpAgent('Right')">&nbsp;</div>
+          </div>
+          <div>
+            <div class="butt down" onclick="sendToImpAgent('Down')">&nbsp;</div>
+          </div>
+        </div>
+        <div class="button-pad">
+          <div class="butt" onclick="sendToImpAgent('Start')"><div class="label">B</div></div>
+          <div class="butt" onclick="sendToImpAgent('Start')"><div class="label">A</div></div>
+        </div>
+      </div>
+    </div>
 </body>
 </html>
