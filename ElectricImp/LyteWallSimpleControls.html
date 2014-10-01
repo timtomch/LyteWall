@@ -1,0 +1,83 @@
+<!doctype html>
+<html>
+<head>
+<title> Site 3 Pixel Wall | Tetris </title>
+<style type='text/css'>
+html, body, #wrapper {
+  height:100%;
+  margin: 0;
+  padding: 0;
+  border: none;
+  text-align: center;
+}
+#wrapper {
+  background-color: #ffffff;
+  margin: 0 auto;
+  text-align: center;
+  color: #ffffff;
+  vertical-align: middle;
+  width: 100%;
+}
+.butt {
+  background-color:#00ff00;
+  color: #000000;
+}
+</style>
+<script>
+  function sendToImpAgent(value)
+  {
+    var url = "http://agent.electricimp.com/ArIBV6u53ILd"; //document.URL;
+    url = url + "?key=" + encodeURIComponent(value);
+
+    if (window.XMLHttpRequest)
+    {
+      devInfoReq = new XMLHttpRequest();
+    }
+    else
+    {
+      devInfoReq = new ActiveXObject("Microsoft.XMLHTTP");
+    }
+    try
+    {
+      devInfoReq.open('GET', url, true);
+      devInfoReq.send();
+    }
+    catch (err)
+    {
+      console.log('Error parsing device info from imp');
+    }
+  }
+</script>
+</head>
+<body>
+    <table border="0" id="wrapper">
+        <tr>
+            <td>0</td>
+            <td class="butt" onclick="sendToImpAgent('Up')">U</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+        </tr>
+        <tr>
+            <td class="butt" onclick="sendToImpAgent('Left')">L</td>
+            <td>0</td>
+            <td class="butt" onclick="sendToImpAgent('Right')">R</td>
+            <td>0</td>
+            <td class="butt" onclick="sendToImpAgent('Start')">O</td>
+            <td>0</td>
+            <td class="butt" onclick="sendToImpAgent('Start')">X</td>
+        </tr>
+        <tr>
+            <td>0</td>
+            <td class="butt" onclick="sendToImpAgent('Down')">D</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+        </tr>
+    </table>
+</body>
+</html>
