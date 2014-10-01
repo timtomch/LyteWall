@@ -2,9 +2,25 @@
 || LyteWall Controller Input Agent
 */
 
+ipaddy <- "unknown";
+
+function serverLog(s)
+{
+  server.log("[" + ipaddy + "]: " + s);
+}
 
 function requestHandler(request, response)
 {
+  //local ipaddy = "";
+  if ("x-real-ip" in request.headers)
+  {
+    ipaddy = request.headers["x-real-ip"];
+  }
+  else
+  {
+    ipaddy = "unknown";
+  }
+
   try
   {
     if ("key" in request.query)
@@ -13,7 +29,8 @@ function requestHandler(request, response)
       
       if (message.len() > 40)
       {
-        server.log("Trimming message.");
+        //server.log("Trimming message.");
+        serverLog("Trimming message.");
         message = message.slice(0, 40);
       }
 
@@ -24,12 +41,12 @@ function requestHandler(request, response)
         case "Left":
         case "Right":
         case "Start":
-          server.log("Got: " + message);
+          serverLog("Got: " + message);
           device.send("SendKey", message)
           break;
         default:
           // ignore
-          server.log("WTF: " + message);
+          serverLog("WTF: " + message);
           break;
       }
 
@@ -40,7 +57,7 @@ function requestHandler(request, response)
     {
       response.header("Location", "http://www.googledrive.com/host/0BxcFNQX9fJt9QWROTjhraWVDX2c");
       response.send(301, "");
-      server.log("Sending redirect");
+      serverLog("Sending redirect");
     }
   }
   catch (ex)
